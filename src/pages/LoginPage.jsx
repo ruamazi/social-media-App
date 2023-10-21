@@ -19,6 +19,8 @@ import useShowToast from "../hooks/useShowToast";
 import { useSetRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";
 
+const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
+
 const LoginPage = () => {
   const [inputV, setInputV] = useState({
     username: "",
@@ -33,7 +35,7 @@ const LoginPage = () => {
     setLoading(true);
     const BACKEND_URL = "/api/users/login";
     try {
-      const resp = await fetch(BACKEND_URL, {
+      const resp = await fetch(API_URL + BACKEND_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

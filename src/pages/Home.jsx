@@ -5,6 +5,8 @@ import SinglePost from "../components/SinglePost";
 import { useRecoilState } from "recoil";
 import postsAtom from "../atoms/postsAtom";
 
+const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
+
 const Home = () => {
   const showToast = useShowToast();
   const [posts, setPosts] = useRecoilState(postsAtom);
@@ -15,7 +17,7 @@ const Home = () => {
       setIsLoading(true);
       setPosts([]);
       try {
-        const resp = await fetch("/api/posts/feed");
+        const resp = await fetch(API_URL + "/api/posts/feed");
         const data = await resp.json();
         if (data.error) {
           showToast("Error", data.error, "error");

@@ -20,6 +20,8 @@ import { Link as DomLink } from "react-router-dom";
 import { useState } from "react";
 import useShowToast from "../hooks/useShowToast";
 
+const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
+
 const UserHeader = ({ user }) => {
   const currentUser = useRecoilValue(userAtom); //logged-in user
   const [isFollowing, setIsFollowing] = useState(
@@ -43,7 +45,7 @@ const UserHeader = ({ user }) => {
     if (updating) return;
     setUpdating(true);
     try {
-      const resp = await fetch(`/api/users/follow/${user._id}`, {
+      const resp = await fetch(`${API_URL}/api/users/follow/${user._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

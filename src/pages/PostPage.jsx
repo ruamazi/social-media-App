@@ -23,6 +23,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 import postsAtom from "../atoms/postsAtom";
 import { Link as DomLink } from "react-router-dom";
 
+const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
+
 const PostPage = () => {
   const { user, loading } = useGetUserProfile();
   const [posts, setPosts] = useRecoilState(postsAtom);
@@ -35,7 +37,7 @@ const PostPage = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const resp = await fetch(`/api/posts/get-post/${pId}`);
+        const resp = await fetch(`${API_URL}/api/posts/get-post/${pId}`);
         const data = await resp.json();
         if (data.error) {
           showToast("Error", data.error, "error");
@@ -52,7 +54,7 @@ const PostPage = () => {
   async function handleDeletePost() {
     try {
       if (!window.confirm("Are you sure you want to delete this post")) return;
-      const resp = await fetch(`/api/posts/delete/${post._id}`, {
+      const resp = await fetch(`${API_URL}/api/posts/delete/${post._id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

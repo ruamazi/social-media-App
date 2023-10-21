@@ -41,6 +41,8 @@ const CreatePost = () => {
   const user = useRecoilValue(userAtom);
   const { username } = useParams(userAtom);
 
+  const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
+
   const handleTextChange = (e) => {
     const inputText = e.target.value;
     if (inputText.length > maxChar) {
@@ -56,7 +58,7 @@ const CreatePost = () => {
   const handleSubmitPost = async () => {
     setLoading(true);
     try {
-      const resp = await fetch("/api/posts/publish", {
+      const resp = await fetch(API_URL + "/api/posts/publish", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

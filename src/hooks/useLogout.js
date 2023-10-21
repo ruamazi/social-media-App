@@ -3,6 +3,8 @@ import userAtom from "../atoms/userAtom";
 import useShowToast from "./useShowToast";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
+
 const useLogout = () => {
   const setUser = useSetRecoilState(userAtom);
   const showToast = useShowToast();
@@ -10,7 +12,7 @@ const useLogout = () => {
 
   const logout = async () => {
     try {
-      const resp = await fetch("/api/users/logout", {
+      const resp = await fetch(API_URL + "/api/users/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

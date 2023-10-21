@@ -20,8 +20,6 @@ import useShowToast from "../hooks/useShowToast";
 import userAtom from "../atoms/userAtom";
 import { useSetRecoilState } from "recoil";
 
-const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
-
 const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const showToast = useShowToast();
@@ -38,7 +36,7 @@ const SignupPage = () => {
 
   const handleSubmit = async () => {
     try {
-      const resp = await fetch(API_URL + BACKEND_URL, {
+      const resp = await fetch(BACKEND_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

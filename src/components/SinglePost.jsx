@@ -9,8 +9,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import postsAtom from "../atoms/postsAtom";
 
-const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
-
 const SinglePost = ({ post }) => {
   const currentUser = useRecoilValue(userAtom);
   const [postOwner, setPostOwner] = useState();
@@ -22,7 +20,7 @@ const SinglePost = ({ post }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const resp = await fetch(`${API_URL}/api/users/profile/${postedBy}`);
+        const resp = await fetch(`/api/users/profile/${postedBy}`);
         const data = await resp.json();
         if (data.error) {
           showToast("Error", data.error, "error");
@@ -40,7 +38,7 @@ const SinglePost = ({ post }) => {
   const handleDeletePost = async () => {
     try {
       if (!window.confirm("Are you sure you want to delete this post")) return;
-      const resp = await fetch(`${API_URL}/api/posts/delete/${post._id}`, {
+      const resp = await fetch(`/api/posts/delete/${post._id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

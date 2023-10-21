@@ -9,8 +9,6 @@ import useGetUserProfile from "../hooks/useGetUserProfile";
 import { useRecoilState } from "recoil";
 import postsAtom from "../atoms/postsAtom";
 
-const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
-
 const UserPage = () => {
   const { user, loading } = useGetUserProfile();
   const { username } = useParams();
@@ -22,7 +20,7 @@ const UserPage = () => {
     const getUserPosts = async () => {
       setFetchingUserPosts(true);
       try {
-        const resp = await fetch(`${API_URL}/api/posts/user/${username}`);
+        const resp = await fetch(`/api/posts/user/${username}`);
         const data = await resp.json();
         if (data.error) {
           showToast("Error", data.error, "error");

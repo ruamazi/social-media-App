@@ -21,8 +21,6 @@ import usePrevieImg from "../hooks/usePrevieImg";
 import useShowToast from "../hooks/useShowToast";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
-
 const ProfilePage = () => {
   const [user, setUser] = useRecoilState(userAtom);
   const [updating, setUpdating] = useState(false);
@@ -54,7 +52,7 @@ const ProfilePage = () => {
     if (updating) return;
     setUpdating(true);
     try {
-      const resp = await fetch(`${API_URL}/api/users/update/${user._id}`, {
+      const resp = await fetch(`/api/users/update/${user._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

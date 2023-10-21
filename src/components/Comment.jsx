@@ -7,8 +7,6 @@ import useShowToast from "../hooks/useShowToast";
 import { useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 
-const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
-
 const Comment = ({ reply, lastReply, postOwnerId, postId }) => {
   const { createdAt, username, userProfilePic, text } = reply;
   const user = useRecoilValue(userAtom);
@@ -18,15 +16,12 @@ const Comment = ({ reply, lastReply, postOwnerId, postId }) => {
 
   const handleDeleteComment = async () => {
     try {
-      const resp = await fetch(
-        `${API_URL}/api/posts/delete/${postId}/${reply._id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const resp = await fetch(`/api/posts/delete/${postId}/${reply._id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       const data = await resp.json();
       if (data.error) {
         showToast("Error", data.error, "error");

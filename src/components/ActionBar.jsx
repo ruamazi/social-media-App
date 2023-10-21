@@ -20,8 +20,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import postsAtom from "../atoms/postsAtom";
 
-const API_URL = "https://social-media-app-vercel-gamma.vercel.app";
-
 const ActionBar = ({ post: post }) => {
   const user = useRecoilValue(userAtom);
   const [posts, setPosts] = useRecoilState(postsAtom);
@@ -40,7 +38,7 @@ const ActionBar = ({ post: post }) => {
     if (liking) return;
     setLiked(true);
     try {
-      const resp = await fetch(`${API_URL}/api/posts/like/${post?._id}`, {
+      const resp = await fetch(`/api/posts/like/${post?._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +83,7 @@ const ActionBar = ({ post: post }) => {
     if (isReplying) return;
     try {
       setIsReplying(true);
-      const resp = await fetch(`${API_URL}/api/posts/reply/${post?._id}`, {
+      const resp = await fetch(`/api/posts/reply/${post?._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -97,6 +95,7 @@ const ActionBar = ({ post: post }) => {
         showToast("Error", data.error, "error");
         return;
       }
+      // setPosts({...posts, replies: [...post.replies, data]})
       const updatedPosts = posts.map((p) => {
         if (p._id === post._id) {
           return { ...p, replies: [...p.replies, data] };

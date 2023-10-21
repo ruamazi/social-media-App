@@ -9,8 +9,6 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "https://social-media-app-vercel-gamma.vercel.app",
-        changeOrigin: true,
-        secure: false,
       },
     },
   },

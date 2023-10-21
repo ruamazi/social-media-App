@@ -75,11 +75,11 @@ const UserHeader = ({ user }) => {
             fontWeight={"bold"}
             textTransform={"capitalize"}
           >
-            {user?.name}
+            - {user?.name}
           </Text>
-          <Flex gap={"2"} alignItems={"center"}>
+          <Flex justifyContent={"center"} gap={"2"} alignItems={"center"}>
             <Text fontSize={"sm"}>@{user?.username}</Text>
-            <Text
+            {/* <Text
               fontSize={"xs"}
               bg={"gray.dark"}
               color={"gray.light"}
@@ -87,7 +87,7 @@ const UserHeader = ({ user }) => {
               borderRadius={"full"}
             >
               threads.net
-            </Text>
+            </Text> */}
           </Flex>
         </Box>
         <Box>
@@ -96,6 +96,7 @@ const UserHeader = ({ user }) => {
               name={user?.name}
               src={user?.profilePic || ""}
               size={{ base: "lg", md: "xl" }}
+              style={{ outline: "2px solid white" }}
             />
           )}
         </Box>
@@ -114,19 +115,22 @@ const UserHeader = ({ user }) => {
 
       <Flex width={"full"} justifyContent={"space-between"}>
         <Flex gap={"2"} alignItems={"center"}>
-          <Text color={"gray.light"}>{user?.followers.length} followers</Text>
+          <Text color={"gray.light"}>
+            {user?.followers?.length}{" "}
+            {user?.followers?.length === 1 ? "Follower" : "Followers"}
+          </Text>
           <Box
             bg={"gray.light"}
             width={"1"}
             height={"1"}
             borderRadius={"50%"}
           />
-          <Link color={"gray.light"}>instagram.com</Link>
+          <Text color={"gray.light"}>Following {user.following?.length} </Text>
         </Flex>
         <Flex>
-          <Box className="icon-container">
+          {/* <Box className="icon-container">
             <BsInstagram size={"24"} cursor={"pointer"} />
-          </Box>
+          </Box> */}
           <Box className="icon-container">
             <Menu>
               <MenuButton>

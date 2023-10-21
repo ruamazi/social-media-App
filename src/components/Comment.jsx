@@ -49,9 +49,10 @@ const Comment = ({ reply, lastReply, postOwnerId, postId }) => {
           >
             <DomLink to={`/${username}`}>
               <Text fontWeight={"bold"} fontSize={"sm"}>
-                {username}
+                @{username}
               </Text>
             </DomLink>
+
             <Flex gap={"2"} alignItems={"center"}>
               <Text color={"gray.light"} fontSize={"xs"}>
                 {formatedDate}

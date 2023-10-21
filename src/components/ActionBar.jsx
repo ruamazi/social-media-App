@@ -153,8 +153,8 @@ const ActionBar = ({ post: post }) => {
             strokeWidth="2"
           ></path>
         </svg>
-        <RepostSVG />
-        <ShareSVG />
+        {/* <RepostSVG />
+        <ShareSVG /> */}
       </Flex>
       <Flex gap={"2"} alignItems={"center"}>
         <Text color={"gray.light"} fontSize={"sm"}>

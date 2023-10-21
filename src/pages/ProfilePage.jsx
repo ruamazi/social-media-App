@@ -19,10 +19,12 @@ import { useRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";
 import usePrevieImg from "../hooks/usePrevieImg";
 import useShowToast from "../hooks/useShowToast";
+import { useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
   const [user, setUser] = useRecoilState(userAtom);
   const [updating, setUpdating] = useState(false);
+  const navigate = useNavigate();
   const defaultPic =
     "https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg";
   const fileRef = useRef(null);
@@ -65,11 +67,17 @@ const ProfilePage = () => {
       showToast("Success", "Profile updated successfully", "success");
       setUser(data);
       localStorage.setItem("user", JSON.stringify(data));
+      navigate(`/${user.username}`);
     } catch (error) {
       showToast("Error", error, "error");
     } finally {
       setUpdating(false);
     }
+  };
+
+  const handleCancel = (e) => {
+    e.preventDefault();
+    navigate(`/${user.username}`);
   };
 
   return (
@@ -179,6 +187,7 @@ const ProfilePage = () => {
               _hover={{
                 bg: "red.500",
               }}
+              onClick={handleCancel}
             >
               Cancel
             </Button>

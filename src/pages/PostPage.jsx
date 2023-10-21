@@ -85,13 +85,19 @@ const PostPage = () => {
         <DomLink to={`/${user.username}`}>
           <Flex alignItems={"center"} gap={"2"}>
             <Avatar src={user.profilePic} size={"md"} name={user.name} />
-            <Flex alignItems={"center"}>
-              <Text fontSize={"sm"} fontWeight={"bold"}>
-                {user.username}
-              </Text>
-              <Image src="/verified.png" w={"4"} h={"4"} ml={"2"} />
-            </Flex>
-            <Text fontSize={"xs"}>{user.followers?.length} Followers</Text>
+            <Tooltip label={user.name} aria-label="A tooltip">
+              <Flex alignItems={"center"}>
+                <Text fontSize={"sm"} fontWeight={"bold"}>
+                  @{user.username}
+                </Text>
+                {/* <Image src="/verified.png" w={"4"} h={"4"} ml={"2"} /> */}
+              </Flex>
+            </Tooltip>
+            <Flex w={1} h={1} bg={"gray.light"} borderRadius={"50%"} />
+            <Text color={"gray.light"} fontSize={"xs"}>
+              {user.followers?.length}{" "}
+              {user.followers?.length === 1 ? "Follower" : "Followers"}
+            </Text>
           </Flex>
         </DomLink>
 

@@ -48,7 +48,7 @@ const UserPost = () => {
               <Text fontSize={"sm"} fontWeight={"bold"}>
                 markzucklbard
               </Text>
-              <Image w={"4"} h={"4"} ml={"1"} src="/verified.png" />
+              {/* <Image w={"4"} h={"4"} ml={"1"} src="/verified.png" /> */}
             </Flex>
             <Flex alignItems={"center"} gap={"4"}>
               <Text fontStyle={"sm"} color={"gray.light"}>

@@ -72,13 +72,15 @@ const SinglePost = ({ post }) => {
         <Flex flex={"1"} flexDirection={"column"} gap={"2"}>
           <Flex justifyContent={"space-between"} w={"full"}>
             <Flex alignItems={"center"}>
-              <DomLink to={`/${postOwner?.username}`}>
-                <Text fontSize={"sm"} fontWeight={"bold"}>
-                  {postOwner?.name} @{postOwner?.username}
-                </Text>
-              </DomLink>
+              <Tooltip label={postOwner?.name} aria-label="A tooltip">
+                <DomLink to={`/${postOwner?.username}`}>
+                  <Text fontSize={"sm"} fontWeight={"bold"}>
+                    @{postOwner?.username}
+                  </Text>
+                </DomLink>
+              </Tooltip>
 
-              <Image w={"4"} h={"4"} ml={"1"} src="/verified.png" />
+              {/* <Image w={"4"} h={"4"} ml={"1"} src="/verified.png" /> */}
             </Flex>
             <Flex alignItems={"center"} gap={"4"}>
               <Text textAlign={"center"} fontSize={"xs"} color={"gray.light"}>

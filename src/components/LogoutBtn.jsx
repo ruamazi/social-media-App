@@ -5,7 +5,7 @@ import useLogout from "../hooks/useLogout";
 const LogoutBtn = () => {
   const logout = useLogout();
   return (
-    <Tooltip label="تسجيل الخروج" aria-label="A tooltip">
+    <Tooltip label="Logout" aria-label="A tooltip">
       <Text cursor={"pointer"} fontSize={30} color={"inherit"} onClick={logout}>
         <IoMdLogOut />
       </Text>
